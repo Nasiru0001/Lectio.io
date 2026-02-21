@@ -23,6 +23,22 @@ export default async function Dashboard() {
     role: "lecturer",
   });
 
+  // after login
+  const { data: existingUser } = await supabase
+    .from("users")
+    .select("*")
+    .eq("email", user?.email)
+    .single();
+
+  if (!existingUser) {
+    await supabase.from("users").insert({
+      id: user?.id,
+      full_name: user?.given_name,
+      email: user?.email,
+      role: "student",
+    });
+  }
+
   return (
     <div>
       <h1>Welcome to Dashboard {user?.given_name}</h1>

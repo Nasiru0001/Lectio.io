@@ -1,79 +1,66 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "@/app/lib/supabase";
 
-export default function AdminPage() {
-  const [faculties, setFaculties] = useState<any[]>([]);
-  const [departmentName, setDepartmentName] = useState("");
-  const [selectedFaculty, setSelectedFaculty] = useState("");
-  const [message, setMessage] = useState("");
+export default function AdminDashboard() {
+  const [stats, setStats] = useState({
+    students: 0,
+    departments: 0,
+    courses: 0,
+    lecturers: 0,
+  });
 
   useEffect(() => {
-    async function fetchFaculties() {
-      const { data } = await supabase.from("faculties").select("*");
+    fetchStats();
+    async function fetchStats() {
+      const { count: students } = await supabase
+        .from("students")
+        .select("*", { count: "exact", head: true });
 
-      setFaculties(data || []);
+      const { count: departments } = await supabase
+        .from("departments")
+        .select("*", { count: "exact", head: true });
+
+      const { count: courses } = await supabase
+        .from("courses")
+        .select("*", { count: "exact", head: true });
+
+      const { count: lecturers } = await supabase
+        .from("lecturers")
+        .select("*", { count: "exact", head: true });
+
+      setStats({
+        students: students || 0,
+        departments: departments || 0,
+        courses: courses || 0,
+        lecturers: lecturers || 0,
+      });
     }
-    fetchFaculties();
   }, []);
 
-  async function addDepartment() {
-    const { error } = await supabase.from("departments").insert([
-      {
-        name: departmentName,
-        faculty_id: selectedFaculty,
-      },
-    ]);
-
-    if (error) {
-      console.log(error);
-      alert("Error adding department");
-    } else {
-      setMessage("Department added successfully");
-      setDepartmentName("");
-    }
-  }
-
   return (
-    <div className="p-8 space-y-4">
-      <h2 className="text-xl font-bold">Add Department</h2>
+    <div>
+      <h1 className="text-3xl font-bold mb-8">Admin Overview</h1>
 
-      <input
-        type="text"
-        placeholder="Department Name"
-        value={departmentName}
-        onChange={(e) => setDepartmentName(e.target.value)}
-        className="border p-2 rounded w-full"
-      />
-
-      <select
-        value={selectedFaculty}
-        onChange={(e) => setSelectedFaculty(e.target.value)}
-        className="border p-2 rounded w-full"
-      >
-        <option className="bg-black" value="">
-          Select Faculty
-        </option>
-        {faculties.map((faculty) => (
-          <option className="bg-black" key={faculty.id} value={faculty.id}>
-            {faculty.name}
-          </option>
-        ))}
-      </select>
-
-      <button
-        onClick={addDepartment}
-        className="bg-green-500 text-white px-4 py-2 rounded"
-      >
-        Add Department
-      </button>
-
-      {message && <p className="mt-2">{message}</p>}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <Card title="Total Students" value={stats.students} />
+        <Card title="Departments" value={stats.departments} />
+        <Card title="Courses" value={stats.courses} />
+        <Card title="Lecturers" value={stats.lecturers} />
+      </div>
     </div>
   );
 }
 
+function Card({ title, value }: { title: string; value: number }) {
+  return (
+    <div className="bg-white shadow rounded-lg p-6">
+      <h2 className="text-black">{title}</h2>
+      <p className="text-3xl text-black font-bold mt-2">{value}</p>
+    </div>
+  );
+}
 // "use client";
 // import { useState } from "react";
 // import { supabase } from "@/app/lib/supabase";
