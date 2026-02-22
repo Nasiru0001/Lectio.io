@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./styles/globals.css";
-import {
-  LoginLink,
-  LogoutLink,
-  RegisterLink,
-} from "@kinde-oss/kinde-auth-nextjs";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,30 +23,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { isAuthenticated } = getKindeServerSession();
-  const isAuthed = await isAuthenticated();
-
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased container mx-auto`}
       >
-        <nav>
-          {isAuthed ? (
-            <LogoutLink>Logout</LogoutLink>
-          ) : (
-            <div>
-              <LoginLink>
-                {" "}
-                <button>Sign in</button>
-              </LoginLink>
-
-              <RegisterLink>
-                <button>Sign up</button>
-              </RegisterLink>
-            </div>
-          )}
-        </nav>
+        <Navbar />
 
         {children}
       </body>

@@ -1,6 +1,4 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { supabase } from "../lib/supabase";
-import { useState, useEffect } from "react";
 
 // const { getUser } = getKindeServerSession();
 // const user = await getUser();
@@ -17,28 +15,6 @@ export default async function Dashboard() {
   const user = await getUser();
   const students = await getStudents();
 
-  await supabase.from("users").upsert({
-    kinde_id: user?.id,
-    email: user?.email,
-    role: "lecturer",
-  });
-
-  // after login
-  const { data: existingUser } = await supabase
-    .from("users")
-    .select("*")
-    .eq("email", user?.email)
-    .single();
-
-  if (!existingUser) {
-    await supabase.from("users").insert({
-      id: user?.id,
-      full_name: user?.given_name,
-      email: user?.email,
-      role: "student",
-    });
-  }
-
   return (
     <div>
       <h1>Welcome to Dashboard {user?.given_name}</h1>
@@ -48,12 +24,6 @@ export default async function Dashboard() {
       </pre>
 
       <h1>Total Students: {students.length}</h1>
-
-      {students.map((student: any) => (
-        <div key={student.id}>
-          <h2>{student.name}</h2>
-        </div>
-      ))}
     </div>
   );
 }
