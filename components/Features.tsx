@@ -6,26 +6,29 @@ type CardComponent = {
 
 const Features = () => {
   return (
-    <div className="grid md:grid-cols-3 grid-cols-1 grid-rows-2 gap-4 md:px-0 px-4">
-      <CardComponent
-        title="Student Analytics"
-        value="  Track active vs inactive students, level distribution, and department breakdown."
-      />
+    <div>
+      <h2 className="tmd:text-5xl text-4xl font-bold uppercase text-center mb-12 ">
+        Powerful Analytics, Simplified
+      </h2>
 
-      <CardComponent
-        title="Enrollment Trends"
-        value=" Visualize enrollment per semester, year, and course, with growth insights."
-      />
-
-      <CardComponent
-        title="Performance Insights"
-        value=" View average scores, pass/fail rates, and course difficulty comparisons."
-      />
-
-      <CardComponent
-        title="Lecturer Workload"
-        value=" Quickly see assigned courses, students per lecturer, and overloaded staff"
-      />
+      <div className="grid md:grid-cols-3 grid-cols-1 grid-rows-2 gap-4 md:px-0 px-4">
+        <CardComponent
+          title="Student Analytics"
+          value="  Track active vs inactive students, level distribution, and department breakdown."
+        />
+        <CardComponent
+          title="Enrollment Trends"
+          value=" Visualize enrollment per semester, year, and course, with growth insights."
+        />
+        <CardComponent
+          title="Performance Insights"
+          value=" View average scores, pass/fail rates, and course difficulty comparisons."
+        />
+        <CardComponent
+          title="Lecturer Workload"
+          value=" Quickly see assigned courses, students per lecturer, and overloaded staff"
+        />
+      </div>
     </div>
   );
 };

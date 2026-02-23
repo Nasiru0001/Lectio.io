@@ -12,11 +12,11 @@ export default async function Navbar() {
 
   return (
     <nav className=" mx-auto pt-4 flex justify-between items-center">
-      <h1 className="text-white font-bold">LECTIO.IO</h1>
+      <h1 className="text-2xl text-white font-bold">LECTIO.IO</h1>
       <div>
         {isAuthed ? (
           <LogoutLink>
-            <button>Logout</button>
+            <button className="cursor-pointer">Logout</button>
           </LogoutLink>
         ) : (
           <div>

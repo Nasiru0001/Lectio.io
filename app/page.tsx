@@ -1,4 +1,5 @@
 import About from "@/components/About";
+import CTA from "@/components/CTA";
 import Features from "@/components/Features";
 import HeroSection from "@/components/HeroSection";
 import React from "react";
@@ -11,6 +12,7 @@ const page = () => {
       </div>
       <Features />
       <About />
+      <CTA />
     </div>
   );
 };
