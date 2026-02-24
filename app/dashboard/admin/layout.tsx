@@ -50,7 +50,7 @@ export default async function DashboardLayout({
   return (
     <div>
       <Navbar />
-      <SidebarLayout>{children}</SidebarLayout>;
+      <SidebarLayout>{children}</SidebarLayout>
     </div>
   );
 }

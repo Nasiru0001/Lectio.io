@@ -25,6 +25,17 @@ export default function DepartmentsPage() {
     }
   }, []);
 
+  const handleDelete = async (id: string) => {
+    const { error } = await supabase.from("departments").delete().eq("id", id);
+
+    if (error) {
+      console.error("Delete error:", error);
+    } else {
+      // Refresh UI
+      setDepartments((prev) => prev.filter((d) => d.id !== id));
+    }
+  };
+
   async function addDepartment(e: React.FormEvent) {
     e.preventDefault();
 
@@ -79,8 +90,14 @@ export default function DepartmentsPage() {
       {/* List */}
       <div className="space-y-2">
         {departments.map((dept) => (
-          <div key={dept.id} className="bg-white p-3 rounded shadow">
-            <strong>{dept.name}</strong>
+          <div key={dept.id} className="bg-black p-3 rounded shadow">
+            <strong>{dept.name}</strong>{" "}
+            <button
+              onClick={() => handleDelete(dept.id)}
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+            >
+              Delete
+            </button>
             <p className="text-sm text-gray-600">
               Faculty: {dept.faculties?.name}
             </p>

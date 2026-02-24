@@ -19,7 +19,7 @@ export default function SidebarLayout({ children }: Props) {
             href="/dashboard/admin"
             className="hover:bg-gray-700 p-2 rounded"
           >
-            Overview
+            Dashboard
           </Link>
           <Link
             href="/dashboard/admin/faculties"
@@ -50,6 +50,34 @@ export default function SidebarLayout({ children }: Props) {
             className="hover:bg-gray-700 p-2 rounded"
           >
             Lecturers
+          </Link>
+
+          <Link
+            href="/dashboard/admin/EnrollmentAnalytics"
+            className="hover:bg-gray-700 p-2 rounded"
+          >
+            Enrollment Analytics
+          </Link>
+
+          <Link
+            href="/dashboard/admin/performance"
+            className="hover:bg-gray-700 p-2 rounded"
+          >
+            Performance Analytics
+          </Link>
+
+          <Link
+            href="/dashboard/admin/workload"
+            className="hover:bg-gray-700 p-2 rounded"
+          >
+            Lecturer Workload
+          </Link>
+
+          <Link
+            href="/dashboard/admin/workload"
+            className="hover:bg-gray-700 p-2 rounded"
+          >
+            Manage Admins & Users
           </Link>
         </nav>
       </aside>

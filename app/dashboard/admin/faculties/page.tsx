@@ -18,6 +18,17 @@ export default function FacultiesPage() {
     }
   }, []);
 
+  const handleDelete = async (id: string) => {
+    const { error } = await supabase.from("faculties").delete().eq("id", id);
+
+    if (error) {
+      console.error("Delete error:", error);
+    } else {
+      // Refresh UI
+      setFaculties((prev) => prev.filter((f) => f.id !== id));
+    }
+  };
+
   async function addFaculty(e: React.FormEvent) {
     e.preventDefault();
 
@@ -55,7 +66,13 @@ export default function FacultiesPage() {
       <div className="space-y-2">
         {faculties.map((faculty) => (
           <div key={faculty.id} className="bg-black p-3 rounded shadow">
-            {faculty.name}
+            {faculty.name}{" "}
+            <button
+              onClick={() => handleDelete(faculty.id)}
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+            >
+              Delete
+            </button>
           </div>
         ))}
       </div>

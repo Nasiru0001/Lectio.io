@@ -6,7 +6,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div>
+    <div className="container mx-auto">
       <div className="h-screen">
         <HeroSection />
       </div>
