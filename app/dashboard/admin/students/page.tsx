@@ -2,7 +2,7 @@
 import { supabase } from "@/app/lib/supabase";
 import React, { useEffect, useState } from "react";
 
-const StudentsPage = () => {
+export default function StudentsPage() {
   const [students, setStudents] = useState<any[]>([]);
   const [name, setName] = useState("");
   const [level, setLevel] = useState("");
@@ -11,14 +11,13 @@ const StudentsPage = () => {
   const [admissionYear, setAdmissionYear] = useState("");
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
+
   useEffect(() => {
     fetchStudents();
-
     async function fetchStudents() {
-      const { data, error } = await supabase.from("students").select("*");
+      const { data } = await supabase.from("students").select("*");
 
-      if (error) console.log(error);
-      else setStudents(data || []);
+      setStudents(data || []);
     }
   }, []);
 
@@ -125,6 +124,4 @@ const StudentsPage = () => {
       ))}
     </div>
   );
-};
-
-export default StudentsPage;
+}

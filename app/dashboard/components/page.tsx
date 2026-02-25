@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ReactNode } from "react";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs";
 
 interface Props {
   children: ReactNode;
@@ -12,7 +13,7 @@ export default function SidebarLayout({ children }: Props) {
     <div className="flex h-screen">
       {/* Sidebar */}
       <aside className="w-64 bg-gray-800 text-white p-4 flex flex-col">
-        <h2 className="text-xl font-bold mb-6">Admin Dashboard</h2>
+        {/* <h2 className="text-xl font-bold mb-6">LECTIO.IO</h2> */}
 
         <nav className="flex flex-col space-y-2">
           <Link
@@ -79,6 +80,12 @@ export default function SidebarLayout({ children }: Props) {
           >
             Manage Admins & Users
           </Link>
+
+          <LogoutLink>
+            <button className="hover:bg-gray-700 p-2 rounded w-full text-left">
+              Logout
+            </button>
+          </LogoutLink>
         </nav>
       </aside>
 

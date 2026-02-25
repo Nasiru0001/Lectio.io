@@ -29,7 +29,7 @@ export default function DepartmentsPage() {
     const { error } = await supabase.from("departments").delete().eq("id", id);
 
     if (error) {
-      console.error("Delete error:", error);
+      console.log(`error deleting department ${error}`);
     } else {
       // Refresh UI
       setDepartments((prev) => prev.filter((d) => d.id !== id));
@@ -107,3 +107,5 @@ export default function DepartmentsPage() {
     </div>
   );
 }
+
+// Imam getting an error. when i visit the site as a new users or existing user it directs me to kinde directly i don't want this i want to be able to sign up as a new user if i want to or not and if i have signed up mon aa device it should rememeber me

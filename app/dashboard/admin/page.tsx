@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/app/lib/supabase";
+import DashboardCharts from "./DashboardCharts/page";
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -9,6 +10,9 @@ export default function AdminDashboard() {
     departments: 0,
     courses: 0,
     lecturers: 0,
+    average: 0,
+    enrollment: 0,
+    passRate: 0,
   });
 
   useEffect(() => {
@@ -16,6 +20,10 @@ export default function AdminDashboard() {
     async function fetchStats() {
       const { count: students } = await supabase
         .from("students")
+        .select("*", { count: "exact", head: true });
+
+      const { count: enrollment } = await supabase
+        .from("enrollment")
         .select("*", { count: "exact", head: true });
 
       const { count: departments } = await supabase
@@ -30,11 +38,31 @@ export default function AdminDashboard() {
         .from("lecturers")
         .select("*", { count: "exact", head: true });
 
+      const { data: results } = await supabase.from("results").select("score");
+
+      const average = results
+        ? results.reduce((acc, curr) => acc + curr.score, 0) / results.length
+        : 0;
+
+      const { count: total } = await supabase
+        .from("results")
+        .select("*", { count: "exact", head: true });
+
+      const { count: passCount } = await supabase
+        .from("results")
+        .select("*", { count: "exact", head: true })
+        .gte("score", 50);
+
+      const passRate = total && passCount ? (passCount / total) * 100 : 0;
+
       setStats({
         students: students || 0,
         departments: departments || 0,
         courses: courses || 0,
         lecturers: lecturers || 0,
+        average: average || 0,
+        enrollment: enrollment || 0,
+        passRate: passRate || 0,
       });
     }
   }, []);
@@ -45,15 +73,20 @@ export default function AdminDashboard() {
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <Card title="Total Students" value={stats.students} />
-        <Card title="Departments" value={stats.departments} />
-        <Card title="Courses" value={stats.courses} />
         <Card title="Lecturers" value={stats.lecturers} />
+        <Card title="Courses" value={stats.courses} />
+        <Card title="Enrollment" value={stats.enrollment} />
+        <Card title="Departments" value={stats.departments} />
+        <Card title="Average Score" value={`${stats.average.toFixed(0)}%`} />
+        <Card title="Pass Rate" value={`${stats.passRate.toFixed(1)}%`} />
       </div>
+
+      <DashboardCharts />
     </div>
   );
 }
 
-function Card({ title, value }: { title: string; value: number }) {
+function Card({ title, value }: { title: string; value: number | string }) {
   return (
     <div className="bg-white shadow rounded-lg p-6">
       <h2 className="text-black">{title}</h2>

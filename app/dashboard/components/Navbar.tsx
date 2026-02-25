@@ -23,10 +23,10 @@ export default async function Navbar() {
 
   return (
     <div className="flex justify-between items-center bg-gray-800 text-white p-4">
-      <h1 className="font-bold">University Analytics</h1>
+      <h1 className="font-bold text-2xl">LECTIO.IO</h1>
 
       <div className="flex items-center gap-4">
-        <span>{user.email}</span>
+        <span>{user.given_name}</span>
         <span className=" px-3 py-1 rounded">{data?.role?.toLowerCase()}</span>
       </div>
     </div>

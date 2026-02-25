@@ -48,7 +48,7 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <Navbar />
       <SidebarLayout>{children}</SidebarLayout>
     </div>
