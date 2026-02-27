@@ -75,7 +75,7 @@ export default function SidebarLayout({ children }: Props) {
           </Link>
 
           <Link
-            href="/dashboard/admin/workload"
+            href="/dashboard/admin/ManageUsersandAdmins"
             className="hover:bg-gray-700 p-2 rounded"
           >
             Manage Admins & Users

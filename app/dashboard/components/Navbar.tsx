@@ -18,8 +18,8 @@ export default async function Navbar() {
     .eq("kinde_id", user.id)
     .single();
 
-  console.log("User role:", data?.role);
-  console.log("Kinde ID:", user.id);
+  // console.log("User role:", data?.role);
+  // console.log("Kinde ID:", user.id);
 
   return (
     <div className="flex justify-between items-center bg-gray-800 text-white p-4">

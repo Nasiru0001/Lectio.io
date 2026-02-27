@@ -1,7 +1,7 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
-import SidebarLayout from "../components/page";
+import SidebarLayout from "../components/AdminSidebar";
 import Navbar from "@/app/dashboard/components/Navbar";
 
 export default async function DashboardLayout({
