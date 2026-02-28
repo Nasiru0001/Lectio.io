@@ -1,10 +1,9 @@
 // app/lecturer/layout.tsx
-import Link from "next/link";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { redirect } from "next/navigation";
 import { supabase } from "@/app/lib/supabase";
 import LecturerSidebar from "../components/LecturerSidebar";
-import Navbar from "../components/Navbar";
+import Navbar from "@/app/dashboard/components/Navbar";
 
 export default async function LecturerLayout({
   children,

@@ -26,8 +26,12 @@ export default async function Navbar() {
       <h1 className="font-bold text-2xl">LECTIO.IO</h1>
 
       <div className="flex items-center gap-4">
-        <span>{user.given_name}</span>
-        <span className=" px-3 py-1 rounded">{data?.role?.toLowerCase()}</span>
+        <span>
+          Welcome,{" "}
+          {data?.role?.split("")[0].toUpperCase() +
+            data?.role?.split("").slice(1).join("")}{" "}
+          {user.given_name}
+        </span>
       </div>
     </div>
   );

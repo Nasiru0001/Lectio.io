@@ -72,8 +72,51 @@ export default function AdminDashboard() {
       <h1 className="text-3xl font-bold mb-8">Admin Overview</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card title="Total Students" value={stats.students} />
-        <Card title="Lecturers" value={stats.lecturers} />
+        <Card
+          title="Total Students"
+          value={stats.students}
+          svg={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-users-icon lucide-users stroke-blue-500 bg-blue-200 p-2  w-10 h-10 rounded-xl"
+            >
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <circle cx="9" cy="7" r="4" />
+            </svg>
+          }
+        />
+        <Card
+          title="Lecturers"
+          value={stats.lecturers}
+          svg={
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-square-user-round-icon lucide-square-user-round stroke-green-500 bg-green-200 p-2  w-10 h-10 rounded-xl"
+            >
+              <path d="M18 21a6 6 0 0 0-12 0" />
+              <circle cx="12" cy="11" r="4" />
+              <rect width="18" height="18" x="3" y="3" rx="2" />
+            </svg>
+          }
+        />
         <Card title="Courses" value={stats.courses} />
         <Card title="Enrollment" value={stats.enrollment} />
         <Card title="Departments" value={stats.departments} />
@@ -86,11 +129,20 @@ export default function AdminDashboard() {
   );
 }
 
-function Card({ title, value }: { title: string; value: number | string }) {
+function Card({
+  title,
+  value,
+  svg,
+}: {
+  title: string;
+  value: number | string;
+  svg?: React.ReactNode;
+}) {
   return (
-    <div className="bg-white shadow rounded-lg p-6">
+    <div className="bg-white shadow rounded-lg p-6 flex flex-col items-start gap-2">
+      {svg}
       <h2 className="text-black">{title}</h2>
-      <p className="text-3xl text-black font-bold mt-2">{value}</p>
+      <p className="text-3xl text-black font-bold ">{value}</p>
     </div>
   );
 }

@@ -69,13 +69,15 @@ export default async function Navbar() {
             <button className="cursor-pointer">Logout</button>
           </LogoutLink>
         ) : (
-          <div className="space-x-2">
+          <div className="space-x-5">
             <LoginLink>
-              <button>Sign in</button>
+              <button className="px-4 py-2 text-white bg-blue-500 rounded-xl">
+                Sign in
+              </button>
             </LoginLink>
 
             <RegisterLink>
-              <button>Sign up</button>
+              <button className="px-4 py-2 text-white bg-blue-500 rounded-xl"></button>
             </RegisterLink>
           </div>
         )}
