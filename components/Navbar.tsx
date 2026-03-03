@@ -54,6 +54,7 @@ import {
   RegisterLink,
 } from "@kinde-oss/kinde-auth-nextjs";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Image from "next/image";
 
 export default async function Navbar() {
   const { isAuthenticated } = getKindeServerSession();
@@ -62,7 +63,19 @@ export default async function Navbar() {
 
   return (
     <nav className=" pt-4 flex justify-between items-center container mx-auto">
-      <h1 className="text-2xl text-white font-bold">LECTIO.IO</h1>
+      <div className=" flex justify-center items-center gap-5">
+        <Image
+          src="/Lectico logo.svg"
+          alt="Lectico.io logo"
+          width={30}
+          height={20}
+        />{" "}
+        <h1 className="text-2xl text-white font-bold flex justify-center items-center -mt-1">
+          {" "}
+          LECTIO.IO
+        </h1>
+      </div>
+
       <div>
         {isAuthed ? (
           <LogoutLink>
@@ -77,7 +90,9 @@ export default async function Navbar() {
             </LoginLink>
 
             <RegisterLink>
-              <button className="px-4 py-2 text-white bg-blue-500 rounded-xl"></button>
+              <button className="px-4 py-2 text-white bg-blue-500 rounded-xl">
+                Sign up
+              </button>
             </RegisterLink>
           </div>
         )}

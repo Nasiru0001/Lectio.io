@@ -3,7 +3,7 @@ import React from "react";
 
 const CTA = () => {
   return (
-    <section className="py-20 px-6 bg-blue-600 text-white text-center my-12">
+    <section className="py-20 px-6 bg-[#00a3a4] text-white text-center my-12">
       <h2 className="md:text-4xl text-4xl font-bold uppercase mb-6">
         Turn Data Into Strategic Decisions
       </h2>

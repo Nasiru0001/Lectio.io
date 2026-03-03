@@ -4,26 +4,29 @@ import Link from "next/link";
 const HeroSection = () => {
   return (
     <div className="flex flex-col items-center justify-center gap-7 h-full">
-      <h1 className=" md:text-6xl  text-3xl font-extrabold text-center uppercase leading-tight">
-        UNIVERSITY ANANLYTICS <br /> SYSTEM
+      <div className="absolute top-20 left-10 w-40 h-40 bg-indigo-400 rounded-full blur-2xl opacity-30 animate-float"></div>
+      <div className="absolute top-20 left-10 w-40 h-40 bg-indigo-400 rounded-full blur-2xl opacity-30 animate-float"></div>
+      <div className="absolute bottom-10 right-20 w-56 h-56 bg-purple-400 rounded-full blur-2xl opacity-20 animate-float"></div>
+      <h1 className=" md:text-6xl  text-3xl font-bold text-center leading-tight">
+        Smarter Academic Management <br /> for Modern Universities
       </h1>
-      <p className="text-xl text-center text-gray-600">
-        Monitor student performance, track enrollment trends, <br /> and manage
-        lecturer workload — all in one intelligent dashboard designed for
-        decision-makers.
+      <p className="text-xl text-center text-gray-200 leading-10">
+        Lectico.io helps universities track Monitor student performance, track
+        enrollment trends, <br /> and manage lecturer workload — all in one
+        intelligent dashboard designed for decision-makers.
       </p>
 
       <div className="flex gap-4">
         <Link
           href="/api/auth/login"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+          className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-medium shadow-lg shadow-indigo-600/30 transition"
         >
           Get Started
         </Link>
 
         <Link
           href="/dashboard"
-          className="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50 transition"
+          className="border border-blue-600 text-blue-600 px-8 py-3 rounded-full hover:bg-blue-50 transition"
         >
           View Demo
         </Link>

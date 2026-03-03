@@ -4,6 +4,7 @@ import Features from "@/components/Features";
 import HeroSection from "@/components/HeroSection";
 import React from "react";
 import Navbar from "@/components/Navbar";
+import ProandCon from "@/components/ProblemandSolution";
 
 const page = () => {
   return (
@@ -12,6 +13,7 @@ const page = () => {
       <div className="h-screen">
         <HeroSection />
       </div>
+      <ProandCon />
       <Features />
       <About />
       <CTA />

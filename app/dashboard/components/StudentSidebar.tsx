@@ -37,7 +37,7 @@ export default function StudentSidebar({ children }: Props) {
               <rect width="7" height="9" x="14" y="12" rx="1" />
               <rect width="7" height="5" x="3" y="16" rx="1" />
             </svg>
-            <span className="text-white">Overview</span>
+            <span className="text-white ">Overview</span>
           </Link>
 
           <Link
