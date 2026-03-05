@@ -12,7 +12,7 @@ export default function SidebarLayout({ children }: Props) {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
-      <aside className="w-64 bg-gray-800 text-white p-4 flex flex-col">
+      <aside className="w-64 bg-(--sidebar-bg) text-white p-4 flex flex-col">
         {/* <h2 className="text-xl font-bold mb-6">LECTIO.IO</h2> */}
 
         <nav className="flex flex-col space-y-2">
@@ -92,6 +92,29 @@ export default function SidebarLayout({ children }: Props) {
           </Link>
 
           <Link
+            href="/dashboard/admin/lecturers"
+            className="hover:bg-gray-700 p-2 rounded flex justify-start items-center gap-2"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              className="lucide lucide-square-user-round-icon lucide-square-user-round"
+            >
+              <path d="M18 21a6 6 0 0 0-12 0" />
+              <circle cx="12" cy="11" r="4" />
+              <rect width="18" height="18" x="3" y="3" rx="2" />
+            </svg>
+            <span className="text-white mt-1">Lecturers </span>
+          </Link>
+
+          <Link
             href="/dashboard/admin/students"
             className="hover:bg-gray-700 p-2 rounded flex justify-start items-center gap-2"
           >
@@ -139,29 +162,6 @@ export default function SidebarLayout({ children }: Props) {
               <path d="M6 8h2" />
             </svg>
             <span className="text-white mt-1">Courses</span>
-          </Link>
-
-          <Link
-            href="/dashboard/admin/lecturers"
-            className="hover:bg-gray-700 p-2 rounded flex justify-start items-center gap-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              className="lucide lucide-square-user-round-icon lucide-square-user-round"
-            >
-              <path d="M18 21a6 6 0 0 0-12 0" />
-              <circle cx="12" cy="11" r="4" />
-              <rect width="18" height="18" x="3" y="3" rx="2" />
-            </svg>
-            <span className="text-white mt-1">Lecturers </span>
           </Link>
 
           <h4 className="my-4 text-gray-400">ANALYTICS</h4>

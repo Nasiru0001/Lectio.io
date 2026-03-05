@@ -3,6 +3,13 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/app/lib/supabase";
 import DashboardCharts from "./DashboardCharts/page";
+import {
+  BookOpenText,
+  TrendingUp,
+  Building2,
+  Percent,
+  BookOpenCheck,
+} from "lucide-react";
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({
@@ -117,11 +124,41 @@ export default function AdminDashboard() {
             </svg>
           }
         />
-        <Card title="Courses" value={stats.courses} />
-        <Card title="Enrollment" value={stats.enrollment} />
-        <Card title="Departments" value={stats.departments} />
-        <Card title="Average Score" value={`${stats.average.toFixed(0)}%`} />
-        <Card title="Pass Rate" value={`${stats.passRate.toFixed(1)}%`} />
+        <Card
+          title="Courses"
+          value={stats.courses}
+          svg={
+            <BookOpenText className=" p-2 w-10 h-10 bg-orange-500  rounded-xl " />
+          }
+        />
+        <Card
+          title="Enrollment"
+          value={stats.enrollment}
+          svg={
+            <TrendingUp className=" p-2 w-10 h-10 bg-yellow-500  rounded-xl " />
+          }
+        />
+        <Card
+          title="Departments"
+          value={stats.departments}
+          svg={
+            <Building2 className=" p-2 w-10 h-10 bg-yellow-500  rounded-xl " />
+          }
+        />
+        <Card
+          title="Average Score"
+          value={`${stats.average.toFixed(0)}%`}
+          svg={
+            <Percent className=" p-2 w-10 h-10 bg-purple-500  rounded-xl " />
+          }
+        />
+        <Card
+          title="Pass Rate"
+          value={`${stats.passRate.toFixed(1)}%`}
+          svg={
+            <BookOpenCheck className=" p-2 w-10 h-10 bg-red-500  rounded-xl " />
+          }
+        />
       </div>
 
       <DashboardCharts />

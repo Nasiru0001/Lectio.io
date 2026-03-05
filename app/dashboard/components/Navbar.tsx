@@ -1,5 +1,6 @@
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { createClient } from "@supabase/supabase-js";
+import Image from "next/image";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -22,8 +23,18 @@ export default async function Navbar() {
   // console.log("Kinde ID:", user.id);
 
   return (
-    <div className="flex justify-between items-center bg-gray-800 text-white p-4">
-      <h1 className="font-bold text-2xl">LECTIO.IO</h1>
+    <div className="flex justify-between items-center bg-(--sidebar-bg) text-white p-4">
+      <div className=" flex justify-center items-center gap-5">
+        <Image
+          src="/Lectico logo.svg"
+          alt="Lectico.io logo"
+          width={20}
+          height={20}
+        />
+        <h1 className="text-2xl text-white font-bold flex justify-center items-center -mt-1">
+          LECTIO.IO
+        </h1>
+      </div>
 
       <div className="flex items-center gap-4">
         <span>

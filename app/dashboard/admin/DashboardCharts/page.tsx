@@ -72,6 +72,7 @@ export default function DashboardCharts() {
           const facultyName = s.departments?.faculties?.name || "Unknown";
           facultyCounts[facultyName] = (facultyCounts[facultyName] || 0) + 1;
         });
+
         setFacultyData(
           Object.entries(facultyCounts).map(([faculty, count]) => ({
             faculty,
@@ -90,7 +91,9 @@ export default function DashboardCharts() {
       <div className="grid grid-cols-2 gap-4">
         {/* Enrollment Trend */}
         <div className="bg-white rounded-xl shadow p-4">
-          <h2 className="font-bold mb-2 text-black">Enrollment Trend</h2>
+          <h2 className="font-bold mb-2 text-2xl text-black">
+            Enrollment Trend
+          </h2>
           <Chart
             type="line"
             height={300}
@@ -112,7 +115,9 @@ export default function DashboardCharts() {
 
         {/* Performance Distribution */}
         <div className="bg-white rounded-xl shadow p-4">
-          <h2 className="font-bold mb-2">Performance Distribution</h2>
+          <h2 className="font-bold mb-2 text-2xl text-black">
+            Performance Distribution
+          </h2>
           <Chart
             type="bar"
             height={300}
@@ -135,10 +140,12 @@ export default function DashboardCharts() {
 
       {/* Faculty Distribution */}
       <div className="bg-white rounded-xl shadow p-4">
-        <h2 className="font-bold mb-2">Faculty Distribution</h2>
+        <h2 className="font-bold mb-2 text-black text-2xl">
+          Faculty Distribution
+        </h2>
         <Chart
           type="donut"
-          height={300}
+          height={400}
           series={facultyData.map((d) => d.count)}
           options={{
             labels: facultyData.map((d) => d.faculty),
